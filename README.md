@@ -10,6 +10,6 @@ Then, this client can be tested like this against the forked `one-record-server-
 
 ```
 mvn package
-java -Djavax.net.ssl.keyStore=demo_client_certificate.jks -Djavax.net.ssl.keyStorePassword=secret -Djavax.net.ssl.trustStore=truststore.jks -jar target\resttemplate-client-with-mutual-ssl-authentication-demo-1.0-SNAPSHOT-jar-with-dependencies.jar
+java -Djavax.net.ssl.keyStore=iata03_demo_certificate.jks -Djavax.net.ssl.keyStorePassword=secret -Djavax.net.ssl.trustStore=truststore_bgca1_changeit.jks -Djavax.net.ssl.trustStorePassword=changeit -jar target\resttemplate-client-with-mutual-ssl-authentication-demo-1.0-SNAPSHOT-jar-with-dependencies.jar
 ```
 Where the `javax.net.ssl.trustStore` system property could be omitted if the server side SSL certificate comes from a publicly-trusted CA.
