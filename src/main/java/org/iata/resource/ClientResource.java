@@ -8,6 +8,7 @@ import org.springframework.web.client.RestTemplate;
 
 import javax.inject.Inject;
 import java.net.URI;
+import java.util.Objects;
 
 @RestController
 @RequestMapping(value="/client")
@@ -28,13 +29,13 @@ public class ClientResource {
 	}
 	
 	@RequestMapping(value = "/server-data", method = RequestMethod.GET)
-	public String getMsData() {
+	public String getServerData() {
 		System.out.println("Got inside server-data method");
 		try {
 			String serverEndpoint = env.getProperty("endpoint.one-record-server-service");
 			System.out.println("One Record Server Endpoint name : [" + serverEndpoint + "]");
-			
-			return restTemplate.getForObject(new URI(serverEndpoint), String.class);
+
+			return restTemplate.getForObject(new URI(Objects.requireNonNull(serverEndpoint)), String.class);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
