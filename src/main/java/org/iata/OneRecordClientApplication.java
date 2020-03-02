@@ -19,7 +19,9 @@ import java.io.InputStream;
 import java.security.KeyStore;
 import java.util.logging.LogManager;
 
-@SpringBootApplication(scanBasePackages = "org.iata.resource")
+@SpringBootApplication(scanBasePackages = {
+    "org.iata.resource",
+    "org.iata.config"})
 public class OneRecordClientApplication extends SpringBootServletInitializer {
 
   public static void main(String[] args) {
