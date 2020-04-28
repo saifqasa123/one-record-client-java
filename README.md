@@ -22,5 +22,7 @@ Following command is used to import a cert to the browser. As the browser can’
 `keytool -importkeystore -srckeystore iata03_demo_certificate.jks -destkeystore iata03.p12 -srcstoretype JKS -deststoretype PKCS12 -srcstorepass secret -deststorepass secret -srcalias "iataclient03 (wisekey certifyi
 d personal gb ca 1)" -destalias "iataclient03 (wisekey certifyid personal gb ca 1)" -srckeypass secret -destkeypass secret -noprompt
 `
+# TODO some useful commands
+keytool -import -trustcacerts -alias onerecordclient -file 2D9E53408E3D8CAE5862FCA6CDEE6CB645EC23C8.crt -keystore iata03_demo_certificate.jks
 
 See https://www.trustico.com/install/import/iis7/iis7-pfx-installation.php on how to import the PKCS12 (PFX) file for Windows.
