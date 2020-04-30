@@ -24,5 +24,8 @@ d personal gb ca 1)" -destalias "iataclient03 (wisekey certifyid personal gb ca 
 `
 # TODO some useful commands
 keytool -import -trustcacerts -alias onerecordclient -file 2D9E53408E3D8CAE5862FCA6CDEE6CB645EC23C8.crt -keystore iata03_demo_certificate.jks
+keytool -importkeystore -srckeystore 65D37B7663E8169D38C75F4EDA06049D09F7839E.pfx -srcstoretype pkcs12 -destkeystore clientcert.jks -deststoretype JKS
+# Remove passphrase from pem file (needed for Heroku)
+openssl rsa -in key.pem -out newkey.pem
 
 See https://www.trustico.com/install/import/iis7/iis7-pfx-installation.php on how to import the PKCS12 (PFX) file for Windows.
