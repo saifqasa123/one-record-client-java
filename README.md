@@ -28,4 +28,8 @@ keytool -importkeystore -srckeystore 65D37B7663E8169D38C75F4EDA06049D09F7839E.pf
 # Remove passphrase from pem file (needed for Heroku)
 openssl rsa -in key.pem -out newkey.pem
 
+openssl s_client -connect one-record-server-tls.herokuapp.com:443 -servername https://one-record-server-tls.herokuapp.com/
+
+curl -vI https://one-record-server-tls.herokuapp.com:443
+
 See https://www.trustico.com/install/import/iis7/iis7-pfx-installation.php on how to import the PKCS12 (PFX) file for Windows.
