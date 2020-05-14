@@ -45,11 +45,11 @@ public class OneRecordClientApplication extends SpringBootServletInitializer {
       keyStore = KeyStore.getInstance("jks");
       ClassPathResource classPathResource = new ClassPathResource("client.jks");
       InputStream inputStream = classPathResource.getInputStream();
-      keyStore.load(inputStream, "Andraspassword1!".toCharArray()); // TODO remove hardcoded password
+      keyStore.load(inputStream, "secret".toCharArray()); // TODO remove hardcoded password
 
       SSLConnectionSocketFactory socketFactory = new SSLConnectionSocketFactory(new SSLContextBuilder()
           .loadTrustMaterial(null, new TrustSelfSignedStrategy())
-          .loadKeyMaterial(keyStore, "Andraspassword1!".toCharArray()).build(), // TODO remove hardcoded password
+          .loadKeyMaterial(keyStore, "secret".toCharArray()).build(), // TODO remove hardcoded password
           NoopHostnameVerifier.INSTANCE);
 
       HttpClient httpClient = HttpClients.custom().setSSLSocketFactory(socketFactory)

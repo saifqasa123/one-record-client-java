@@ -25,6 +25,8 @@ d personal gb ca 1)" -destalias "iataclient03 (wisekey certifyid personal gb ca 
 # TODO some useful commands
 keytool -import -trustcacerts -alias onerecordclient -file 2D9E53408E3D8CAE5862FCA6CDEE6CB645EC23C8.crt -keystore iata03_demo_certificate.jks
 keytool -importkeystore -srckeystore 65D37B7663E8169D38C75F4EDA06049D09F7839E.pfx -srcstoretype pkcs12 -destkeystore clientcert.jks -deststoretype JKS
+keytool -importkeystore -srckeystore one-record-server-tls.herokuapp.com.p12 -srcstoretype pkcs12 -destkeystore client.jks -deststoretype jks
+
 # Remove passphrase from pem file (needed for Heroku)
 openssl rsa -in key.pem -out newkey.pem
 
@@ -33,3 +35,6 @@ openssl s_client -connect one-record-server-tls.herokuapp.com:443 -servername ht
 curl -vI https://one-record-server-tls.herokuapp.com:443
 
 See https://www.trustico.com/install/import/iis7/iis7-pfx-installation.php on how to import the PKCS12 (PFX) file for Windows.
+
+TODO
+mvn package -DskipTests=true -Dpath.to.nginx.ssl_certificate=src/main/resources/ssl_certificate.crt -Dpath.to.nginx.ssl_certificate_key=src/main/resources/ssl_certificate_key.key -Dpath.to.nginx.ssl_client_certificate=src/main/resources/ssl_client_certificate.crt
