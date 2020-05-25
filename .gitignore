@@ -27,4 +27,4 @@ target
 .project
 .classpath
 *.prefs
-.DS_Store
+*.DS_Store
